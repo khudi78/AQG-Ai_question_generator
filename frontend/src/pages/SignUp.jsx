@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const { login } = useContext(UserContext);
@@ -38,13 +39,13 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center text-indigo-600">Register</h2>
+    <div className="max-w-md mx-auto  p-6 mt-40 bg-[#96A78D] rounded-lg shadow-md">
+      <h2 className="text-4xl font-bold mb-10 text-[#255F38]">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Full Name"
-          className="border p-2 w-full rounded mb-4"
+          className="border-black border-2 text-black p-2 w-[300px] rounded mb-4"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -52,7 +53,7 @@ const Signup = () => {
         <input
           type="email"
           placeholder="Email"
-          className="border p-2 w-full rounded mb-4"
+          className=" border-black border-2 text-black p-2 w-[300px]  rounded mb-4"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -60,7 +61,7 @@ const Signup = () => {
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 w-full rounded mb-4"
+          className="border-black border-2 text-black p-2 w-[300px]  rounded mb-10"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -68,10 +69,12 @@ const Signup = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-all disabled:opacity-70"
+          className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 transition-all disabled:opacity-70"
         >
           {loading ? "Registering..." : "Sign Up"}
         </button>
+
+        <Link to='/signin' ><p className="text-[#895928] mt-5 hover:underline">Already have an account? Sign In</p></Link>
       </form>
     </div>
   );

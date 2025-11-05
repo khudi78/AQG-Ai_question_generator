@@ -18,7 +18,7 @@ function App() {
   return (
     <BrowserRouter>
      <UserProvider>
-    <Navbar />
+    <Navbar/>
       
       <Routes>
         <Route path="/" element={<Mainhome />} />

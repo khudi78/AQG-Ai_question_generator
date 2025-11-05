@@ -26,7 +26,7 @@ export default function Studypaper() {
 
 
   return (
-    <div className="min-h-screen  p-6">
+    <div className="w-[1200px] mx-auto  p-6">
       <div className=" items-center mb-10">
         <div className="text-6xl font-bold text-[#255F38]">
           {topic}

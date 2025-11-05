@@ -51,7 +51,7 @@ function Home() {
   return (
     <div className='flex flex-col gap-5'>
       
-      <div className=" text-5xl font-bold text-center mb-6 text-[#255F38]">
+      <div className=" text-5xl font-bold text-center mt-5 mb-6 text-[#255F38]">
            AI Question Paper Generator
       </div>
       <div className='mt-5'>
@@ -108,7 +108,7 @@ function Home() {
          <div
           onClick={handleGenerate}
           disabled={loading}
-          className="mb-4 bg-emerald-700 hover:bg-emerald-900 text-white font-semibold px-5 hover:shadow-md hover:shadow-emerald-800 hover:text-[16px] py-2 rounded-md w-[600px] ml-[25px] transition-all disabled:opacity-70"
+          className="mb-4 bg-emerald-700 cursor-pointer hover:bg-emerald-900 text-white font-semibold px-5 hover:shadow-md hover:shadow-emerald-800 hover:text-[16px] py-2 rounded-md w-[600px] ml-[470px] transition-all disabled:opacity-70"
         >
           {loading ? "Generating..." : "Generate Paper for Exam"}
         </div>
@@ -116,7 +116,7 @@ function Home() {
         <div
           onClick={handleGenerateStudy}
           disabled={load}
-          className="bg-emerald-700 hover:bg-emerald-900 text-white font-semibold px-5 py-2 rounded-md hover:shadow-md hover:text-[16px] hover:shadow-emerald-800  w-[600px] ml-[25px] transition-all disabled:opacity-70"
+          className="bg-emerald-700 cursor-pointer hover:bg-emerald-900 text-white font-semibold px-5 py-2 rounded-md hover:shadow-md hover:text-[16px] hover:shadow-emerald-800  w-[600px] ml-[470px] transition-all disabled:opacity-70"
         >
           {load ? "Generating..." : "Generate Paper for Studying"}
         </div>

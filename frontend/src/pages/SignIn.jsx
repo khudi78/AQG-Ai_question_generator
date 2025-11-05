@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
-
+import { Link } from "react-router-dom";
 const Signin = () => {
   const { login } = useContext(UserContext); // 👈 use context to save user globally
   const navigate = useNavigate();
@@ -36,32 +36,38 @@ const Signin = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center text-indigo-600">Sign In</h2>
+    <div className="max-w-md mx-auto mt-40 bg-[#96A78D] p-6  rounded-lg shadow-md">
+      <h2 className="text-4xl font-bold mb-10 text-[#255F38]">Sign In</h2>
       <form onSubmit={handleSubmit}>
+        <div className="flex flex-col">
         <input
           type="email"
           placeholder="Email"
-          className="border p-2 w-full rounded mb-4"
+          className="border-black text-black border-2 p-2 w-[300px] rounded mb-4 ml-13"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        </div>
+        <div className="flex flex-col">
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 w-full rounded mb-4"
+          className="border-black text-black border-2 p-2 w-[300px] ml-13 rounded mb-10"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-all disabled:opacity-70"
+          className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 transition-all disabled:opacity-70"
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
+
+        <Link to='/signup' ><p className="text-[#895928] mt-5 hover:underline">Don't have an account? Sign Up</p></Link>
       </form>
     </div>
   );

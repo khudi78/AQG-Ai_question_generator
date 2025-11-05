@@ -71,40 +71,37 @@ export default function WebcamProctor({ onViolation }) {
   }, [onViolation]);
 
   // 🧍 Detect face presence
-  useEffect(() => {
-    if (!modelsLoaded) {
-      console.log("⏳ Models not loaded yet — skipping detection loop");
-      return;
-    }
+useEffect(() => {
+  if (!modelsLoaded) {
+    console.log("⏳ Models not loaded yet — skipping detection loop");
+    return;
+  }
 
-    console.log("🎥 Starting face detection loop...");
+  console.log("🎥 Starting face detection loop...");
 
-    const detectFace = async () => {
-      const video = webcamRef.current?.video;
-      if (!video) {
-        console.warn("⚠️ No video element found yet");
-        return;
-      }
+  const detectFace = async () => {
+    console.log("🎥 Running face detection...");
+    const video = webcamRef.current?.video;
+    if (!video) return console.warn("⚠️ No video element found yet");
+    if (video.readyState !== 4)
+      return console.warn("⚠️ Video not ready yet:", video.readyState);
 
-      if (video.readyState !== 4) {
-        console.warn(
-          "⚠️ Video not ready yet (readyState:",
-          video.readyState,
-          ")"
-        );
-        return;
-      }
+    console.log("🎥 Video ready, attempting face detection...");
 
+    try {
       const detections = await faceapi.detectAllFaces(
         video,
         new faceapi.TinyFaceDetectorOptions({
-          inputSize: 224,
-          scoreThreshold: 0.5,
+          inputSize: 320,
+          scoreThreshold: 0.3,
         })
       );
 
+      console.log("👁️ Face detections:", detections);
+
       if (detections.length > 0) {
         console.log("✅ Face detected");
+        //setFaceMissCount(0); // reset counter
       } else {
         console.log("❌ No face detected");
         setFaceMissCount((prev) => {
@@ -120,14 +117,29 @@ export default function WebcamProctor({ onViolation }) {
           return newCount;
         });
       }
-    };
+    } catch (err) {
+      console.error("🚨 Detection error:", err);
+    }
+  };
 
-    const interval = setInterval(detectFace, 3000);
-    return () => clearInterval(interval);
-  }, [modelsLoaded, onViolation]);
+  // 🟢 Run once immediately, then every 3 seconds
+  detectFace();
+  const intervalId = setInterval(() => {
+    console.log("🕒 Running scheduled detection...");
+    detectFace();
+  }, 3000);
+
+  return () => {
+    console.log("🧹 Clearing interval");
+    clearInterval(intervalId);
+  };
+}, [modelsLoaded, onViolation]);
+
+
+
 
   return (
-    <div className="fixed top-4 right-4 bg-white shadow-lg p-2 rounded-lg border border-gray-300 z-50">
+    <div className="fixed top-0 right-4 bg-white shadow-lg p-2 rounded-lg border border-gray-300 z-50">
       <Webcam ref={webcamRef} width={150} height={100} mirrored />
       <p className="text-xs text-gray-700 mt-1">
         Tab Switches: <span className="font-semibold">{tabSwitches}</span>

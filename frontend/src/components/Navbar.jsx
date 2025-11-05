@@ -12,36 +12,36 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-indigo-600 text-white px-6 py-3 shadow-md flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">
-        🧠 AI Exam
+    <nav className="bg-[#134135] text-white px-6 py-3 shadow-md flex justify-between items-center ">
+      <Link to="/">
+        <div className="text-2xl font-bold text-[#B99470]"> AQG - AI Question Generator</div>
       </Link>
 
-      <div className="flex gap-6 items-center">
+      <div className="flex gap-6 items-center text-[#B99470]">
         <Link to="/" className="hover:text-gray-200 font-medium">
-          Home
+         <div className="text-[#B99470] hover:text-[hsl(30,58%,56%)] hover:underline">Home</div> 
         </Link>
 
         {!user ? (
           <>
             <Link to="/signup" className="hover:text-gray-200 font-medium">
-              Register
+              <div className="text-[#B99470] hover:text-[hsl(30,58%,56%)] hover:underline">Sign Up</div>
             </Link>
             <Link to="/signin" className="hover:text-gray-200 font-medium">
-              Sign In
+              <div className="text-[#B99470] hover:text-[hsl(30,58%,56%)] hover:underline">Sign In</div>
             </Link>
           </>
         ) : (
           <>
             <Link to="/generate" className="hover:text-gray-200 font-medium">
-              Generate
+              <div className="text-[#B99470] hover:text-[hsl(30,58%,56%)] hover:underline">Generate</div>
             </Link>
             <Link to="/profile" className="hover:text-gray-200 font-medium">
-              Profile
+              <div className="text-[#B99470] hover:text-[hsl(30,58%,56%)] hover:underline">Profile</div>
             </Link>
             <button
               onClick={handleLogout}
-              className="bg-white text-indigo-600 px-3 py-1 rounded-md font-medium hover:bg-gray-100 transition-all"
+              className="bg-white text-[#B99470] px-3 py-1 rounded-md font-medium hover:bg-gray-100 transition-all"
             >
               Logout
             </button>
