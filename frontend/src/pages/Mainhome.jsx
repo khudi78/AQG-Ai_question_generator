@@ -47,7 +47,7 @@ export default function Mainhome() {
 
       {/* Overlay text */}
       <div className="absolute text-center">
-        <div className=" text-7xl font-bold mb-6 text-[#255F38] drop-shadow-[0_0_20px_#10b981]">
+        <div className=" text-7xl font-bold mb-5 text-[#255F38] drop-shadow-[0_0_20px_#10b981]">
           AI Question Generator
         </div>
         <p className="text-2xl text-emerald-600">
