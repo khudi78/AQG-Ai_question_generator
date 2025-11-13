@@ -23,4 +23,7 @@ app.use("api/test", testRoutes);
 app.use("/api/auth", authRoutes);
 console.log("✅ Auth routes mounted");
 
-app.listen(process.env.PORT, () => console.log(`🚀 Server running on ${process.env.PORT}`));
+//app.listen(process.env.PORT, () => console.log(`🚀 Server running on ${process.env.PORT}`));
+
+export default app;
+
