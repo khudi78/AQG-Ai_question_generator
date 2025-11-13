@@ -9,12 +9,18 @@ import authRoutes from "./routes/authRoutes.js";
 import testRoutes from "./routes/tester.js";
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*", // Or restrict to your frontend domain
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.log(err));
+
+app.get("/", (req, res) => {
+  res.send("Backend running successfully 🚀");
+});
 
 app.use("/api/questions", questionRoutes);
 app.use("/api/exams", examRoutes);
