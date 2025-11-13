@@ -21,6 +21,10 @@ if not API_KEY:
 
 client = genai.Client(api_key=API_KEY)
 
+@app.route('/')
+def home():
+    return "🚀 Flask app is running successfully on Hugging Face!"
+
 # Helper function to generate questions
 def generate_questions(topic, difficulty, question_type, num):
     """Generate questions of a given type using Gemini API"""
@@ -149,4 +153,5 @@ def calculate_similarity():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=7860)
+

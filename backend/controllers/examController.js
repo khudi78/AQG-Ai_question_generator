@@ -3,7 +3,7 @@ import Exam from "../models/Exam.js";
 import User from "../models/User.js";
 
 // URL of your Python cosine similarity microservice
-const AI_SERVICE_URL = "http://127.0.0.1:5000/similarity";
+const AI_SERVICE_URL = "https://briz-02-question-generator-api.hf.space/similarity";
 
 export const submitExam = async (req, res) => {
   try {

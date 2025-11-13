@@ -5,7 +5,7 @@ export const generateQuestionPaper = async (req, res) => {
     const { topic, difficulty, num_questions, question_type } = req.body;
 
     // Call Python Flask AI microservice
-    const response = await axios.post("http://127.0.0.1:5000/generate-questions", {
+    const response = await axios.post("https://briz-02-question-generator-api.hf.space/generate-questions", {
       topic,
       difficulty,
       num_questions,
