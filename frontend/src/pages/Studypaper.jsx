@@ -1,7 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import api from "../api/api";
-import QuestionCard from "../components/QuestionCard";
 import StudyQuestionCard from "../components/StudyQuestionCard";
 
 export default function Studypaper() {
