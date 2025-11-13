@@ -4,7 +4,7 @@ import axios from "axios";
  * ✅ API helper for frontend.
  * Update the BASE_URL if your backend runs on a different host/port.
  */
-const BASE_URL =  "http://localhost:8000";
+const BASE_URL =  "https://aqg-ai-question-generator-backend.vercel.app";
 
 const client = axios.create({
   baseURL: BASE_URL + "/api",
