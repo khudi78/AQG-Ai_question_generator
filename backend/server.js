@@ -26,6 +26,10 @@ mongoose
       })
   .catch((err) => console.log(err));
 
+      app.get("/", (req, res) => {
+      res.send("hi there");
+    });
+
 app.use("/api/questions", questionRoutes);
 app.use("/api/exams", examRoutes);
 app.use("/api/analyze", analyzeRoutes);
