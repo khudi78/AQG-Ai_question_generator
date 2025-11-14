@@ -26,7 +26,7 @@ mongoose
       })
   .catch((err) => console.log(err));
 
-      app.get("/", (req, res) => {
+      app.get("/status", (req, res) => {
       res.send("hi there");
     });
 
