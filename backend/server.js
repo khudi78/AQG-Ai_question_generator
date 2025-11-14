@@ -19,16 +19,21 @@ mongoose
   .then(() => {
     console.log("✅ MongoDB Connected");
 
-    // Now define your route
     app.get("/", (req, res) => {
       res.send("Backend running successfully 🚀 & MongoDB Connected 🟢");
     });
-      })
-  .catch(err){
-    return res.status(500).send("MongoDB connection failed ❌");
-  }
+  })
+  .catch((err) => {
+    console.log("❌ MongoDB connection failed", err);
 
-      app.get("/status", (req, res) => {
+    // Define the route even when DB fails
+    app.get("/", (req, res) => {
+      res.status(500).send("MongoDB connection failed ❌");
+    });
+  });
+
+
+  app.get("/status", (req, res) => {
       res.send("hi there");
     });
 
