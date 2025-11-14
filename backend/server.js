@@ -24,7 +24,9 @@ mongoose
       res.send("Backend running successfully 🚀 & MongoDB Connected 🟢");
     });
       })
-  .catch((err) => console.log(err));
+  .catch(err){
+    return res.status(500).send("MongoDB connection failed ❌");
+  }
 
       app.get("/status", (req, res) => {
       res.send("hi there");
